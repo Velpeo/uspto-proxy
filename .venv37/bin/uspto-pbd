@@ -1,4 +1,4 @@
-#!/media/psf/Home/Repos/uspto-power-query/.venv37/bin/python3.7
+#!/media/psf/Home/Repos/uspto-proxy/.venv37/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
