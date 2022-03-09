@@ -2,6 +2,18 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+
+from utils import count_words_at_url
+
+result = q.enqueue(count_words_at_url, 'http://heroku.com')
+
+
+
 @app.route('/getmsg/', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
