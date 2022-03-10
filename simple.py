@@ -10,6 +10,7 @@ from uspto.peds.client import UsptoPatentExaminationDataSystemClient
 
 client = UsptoPatentExaminationDataSystemClient()
 
+# https://ped.uspto.gov/peds/#!/#%2Ffaq
 expression = 'firstNamedApplicant:(nasa)'
 result     = client.search(expression)
 

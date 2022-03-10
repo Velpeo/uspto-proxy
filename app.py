@@ -18,13 +18,13 @@ from utils import count_words_at_url
 result = q.enqueue(count_words_at_url, 'http://heroku.com')
 
 @app.route('/getpatent/', methods=['GET'])
-def respond():
+def getpatent():
     # Retrieve the name from url parameter
     name = request.args.get("name", None)
 
     client = UsptoPatentExaminationDataSystemClient()
 
-    expression = 'firstNamedApplicant:('+name+')'
+    expression = 'appCustNumber:(157691)'
     result     = client.search(expression)
 
     # xml = dicttoxml(loads(result))
@@ -77,4 +77,4 @@ def index():
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000)
+    app.run(threaded=True, port=5000, ssl_context='adhoc')

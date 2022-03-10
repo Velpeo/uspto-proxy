@@ -41,6 +41,11 @@ pip install -U setuptools
 
 python -m venv venv_util
 
+https://github.com/ip-tools/uspto-opendata-python/blob/master/docs/virtualenv.rst
+
+virtualenv --no-site-packages --python python3.7 .venv37
+
+
 virtualenv .venv37
 virtualenv venv_util
 
