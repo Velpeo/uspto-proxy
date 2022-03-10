@@ -2,6 +2,11 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+# USPTO
+
+from uspto.peds.client import UsptoPatentExaminationDataSystemClient
+
+# Background Process
 
 from rq import Queue
 from worker import conn
@@ -12,7 +17,19 @@ from utils import count_words_at_url
 
 result = q.enqueue(count_words_at_url, 'http://heroku.com')
 
+@app.route('/getpatent/', methods=['GET'])
+def respond():
+    # Retrieve the name from url parameter
+    name = request.args.get("name", None)
 
+    client = UsptoPatentExaminationDataSystemClient()
+
+    expression = 'firstNamedApplicant:('+name+')'
+    result     = client.search(expression)
+
+    # xml = dicttoxml(loads(result))
+
+    return jsonify(result)
 
 @app.route('/getmsg/', methods=['GET'])
 def respond():

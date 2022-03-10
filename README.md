@@ -39,7 +39,10 @@ sudo apt-get install python3-setuptools
 
 pip install -U setuptools
 
+python -m venv venv_util
 
+virtualenv .venv37
+virtualenv venv_util
 
 source .venv37/bin/activate
 
@@ -47,3 +50,9 @@ deactivate
 
 
 pip install pip==8.0.2
+
+
+
+### Resources
+
+* https://devcenter.heroku.com/articles/python-rq
